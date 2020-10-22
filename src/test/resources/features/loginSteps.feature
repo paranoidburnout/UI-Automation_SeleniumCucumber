@@ -1,5 +1,5 @@
 Feature: Authorization
-
+@1
   Scenario: Authorization using password and login
     Given Page opened
     When User pressed button with user icon

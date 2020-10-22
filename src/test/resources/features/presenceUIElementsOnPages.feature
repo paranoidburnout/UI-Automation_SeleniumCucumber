@@ -1,5 +1,5 @@
 Feature: presence ui elements on Pages
-
+@1
   Scenario: Check, the presence of main elements on the Home Page
     Given User open the home page
     Then 4 images was displayed
