@@ -6,15 +6,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
-public class BaseTest {
+public class Hooks {
     protected WebDriver driver;
 
     @BeforeClass(alwaysRun = true)
-    public void  setUp() {
+    public void setUp() {
         System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
         driver = new ChromeDriver();
-        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
-        driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)

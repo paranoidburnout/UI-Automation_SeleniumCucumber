@@ -1,5 +1,5 @@
 Feature: presence ui elements on Pages
-@1
+
   Scenario: Check, the presence of main elements on the Home Page
     Given User open the home page
     Then 4 images was displayed
@@ -7,12 +7,13 @@ Feature: presence ui elements on Pages
     And Main title text center was displayed
     And Below main title text center was displayed
 
+
   Scenario: Check, presence  elements on the service page displayed
     Given Page opened
-    And Pressed button with user icon
-    And Entered text "epam" to the field "Login"
-    And Entered text "1234" to the field "Password"
-    And Pressed element with value 'Enter'
+    And User pressed button with user icon
+    And Type to input with name "Login" text: "epam"
+    And Type to input with name "Password" text: "1234"
+    And User pressed element with value 'Enter'
     When User opened through the header menu Service -> Different Elements Page
     Then Interface on Service page contain 4 checkboxes was displayed
     And  4 radios was displayed

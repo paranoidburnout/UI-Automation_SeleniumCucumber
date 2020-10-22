@@ -13,8 +13,7 @@ import org.testng.Assert;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class LoginPage extends BaseTest {
-
+public class LoginPage extends Hooks {
     @Before
     public void startBrowser() {
         setUp();
@@ -22,6 +21,8 @@ public class LoginPage extends BaseTest {
 
     @Given("^Page opened$")
     public void page_opened() {
+        driver.navigate().to("https://jdi-framework.github.io/tests/index.htm");
+        driver.manage().window().maximize();
         Assert.assertEquals(driver.getTitle(), "Index Page");
     }
 
