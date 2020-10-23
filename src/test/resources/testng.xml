@@ -4,6 +4,7 @@
     <test name="Personal_loan">
         <packages>
             <package name="runner"/>
+            <package name="common"/>
         </packages>
     </test>
 </suite>
