@@ -1,3 +1,4 @@
+@1
 Feature: 2 Service buttons functionality on Home Pages
 
   Background:
