@@ -17,29 +17,35 @@ public class LoginPage extends BaseClass {
         this.base = base;
     }
 
+    public static String userIcon = "//*[@class='fa fa-user']";
+    public static String enterButton = "//button/i[@class='fa fa-sign-in']";
+    public static String userName = "//*[@class='profile-photo']//span";
+
+
     @When("^User pressed button with user icon$")
     public void pressIcon() {
-        WebElement element = base.driver.findElement(By.xpath("//*[@class='fa fa-user']"));
+        WebElement element = base.driver.findElement(By.xpath(userIcon));
         element.click();
+
     }
 
     @And("^Type to input with name \"([^\"]*)\" text: \"([^\"]*)\"$")
     public void typeToInputWithNameText(String input, String text) {
-        base.driver.findElement(By.xpath("//*[@id='" + input + "']")).sendKeys(text);
+        base.driver.findElement(By.xpath(String.format("//*[@id='%s']", input))).sendKeys(text);
     }
 
     @And("^User pressed element with value 'Enter'$")
     public void pressEnter() {
-        WebElement element = base.driver.findElement(By.xpath("//button/i[@class='fa fa-sign-in']"));
+        WebElement element = base.driver.findElement(By.xpath(enterButton));
         element.click();
+
     }
 
     @Then("^PITER CHAILOVSKII is displayed$")
     public void youCanSeeResult() {
-        WebElement element = base.driver.findElement(By.xpath("//*[@class='profile-photo']//span"));
+        WebElement element = base.driver.findElement(By.xpath(userName));
         assertTrue(element.isDisplayed());
         assertEquals(element.getText(), "PITER CHAILOVSKII");
-        assertEquals(base.driver.getTitle(), "Index Page");
     }
 }
 

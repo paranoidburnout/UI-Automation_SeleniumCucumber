@@ -20,12 +20,17 @@ public class Sliders extends BaseClass {
 
     Integer sliderL;
     Integer sliderR;
+    public static String pageService = "//a/span[contains(text(),'Service')]";
+    public static String pageDates = "//a/p/span[contains(text(),'Dates')]";
+    public static String leftSlider = "div:nth-child(2) > div > a:nth-child(1)";
+    public static String rightSlider = "div:nth-child(2) > div > a:nth-child(3)";
+
 
     @And("^Opened through the left menu Service -> Dates$")
     public void openedServiceAndDatesPages() {
-        WebElement element = base.driver.findElement((By.xpath("//a/span[contains(text(),'Service')]")));
+        WebElement element = base.driver.findElement((By.xpath(pageService)));
         element.click();
-        base.driver.findElement((By.xpath("//a/p/span[contains(text(),'Dates')]")));
+        base.driver.findElement((By.xpath(pageDates)));
         element.click();
         base.driver.get(" https://jdi-framework.github.io/tests/page4.htm");
         base.driver.manage().window().maximize();
@@ -34,7 +39,7 @@ public class Sliders extends BaseClass {
     @When("User clicked on the left slider and drag it to {int}")
     public void movingTheLeftSlider(int sliderLeft) {
         sliderL = sliderLeft;
-        WebElement left = base.driver.findElement(By.cssSelector("div:nth-child(2) > div > a:nth-child(1)"));
+        WebElement left = base.driver.findElement(By.cssSelector(leftSlider));
         ((JavascriptExecutor) base.driver).executeScript("arguments[0].scrollIntoView(true);", left);
         Actions actions = new Actions(base.driver);
         actions.dragAndDropBy(left, -276, 0).build().perform();
@@ -44,7 +49,7 @@ public class Sliders extends BaseClass {
     @And("On the right slider and drag it to {int} user clicked")
     public void movingTheRightSlider(int sliderRight) {
         sliderR = sliderRight;
-        WebElement right = base.driver.findElement(By.cssSelector("div:nth-child(2) > div > a:nth-child(3)"));
+        WebElement right = base.driver.findElement(By.cssSelector(rightSlider));
         ((JavascriptExecutor) base.driver).executeScript("arguments[0].scrollIntoView(true);", right);
         int currentPercentage = Integer.parseInt(right.getText());
         int diff = currentPercentage - sliderRight;
@@ -68,8 +73,8 @@ public class Sliders extends BaseClass {
 
     @Then("The \"([^\"]*)\" slider has been successfully moved$")
     public void leftSliderHasBeenSuccessfullyMoved(String slider) {
-        WebElement left = base.driver.findElement(By.cssSelector("div:nth-child(2) > div > a:nth-child(1)"));
-        WebElement right = base.driver.findElement(By.cssSelector("div:nth-child(2) > div > a:nth-child(3)"));
+        WebElement left = base.driver.findElement(By.cssSelector(leftSlider));
+        WebElement right = base.driver.findElement(By.cssSelector(rightSlider));
         switch (slider) {
             case "left":
                 Objects.equals(left.getText(), sliderL);

@@ -1,4 +1,4 @@
-@1
+
 Feature: When user move the sliders function on drag-and-drop Range
 
   Background:

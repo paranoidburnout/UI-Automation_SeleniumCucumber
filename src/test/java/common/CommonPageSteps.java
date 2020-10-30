@@ -14,6 +14,9 @@ public class CommonPageSteps extends BaseClass {
         this.base = base;
     }
 
+    public static String userIcon = "//*[@class='fa fa-user']";
+    public static String enterButton = "//button/i[@class='fa fa-sign-in']";
+
     @Given("^Page opened$")
     public void page_opened() {
         base.driver.get("https://jdi-framework.github.io/tests/index.htm");
@@ -23,7 +26,7 @@ public class CommonPageSteps extends BaseClass {
 
     @And("^Pressed button with user icon$")
     public void pressIcon() {
-        WebElement element = base.driver.findElement(By.xpath("//*[@class='fa fa-user']"));
+        WebElement element = base.driver.findElement(By.xpath(userIcon));
         element.click();
     }
 
@@ -34,7 +37,7 @@ public class CommonPageSteps extends BaseClass {
 
     @And("^Pressed element with value 'Enter'$")
     public void pressElementWithValueEnter() {
-        WebElement element = base.driver.findElement(By.xpath("//button/i[@class='fa fa-sign-in']"));
+        WebElement element = base.driver.findElement(By.xpath(enterButton));
         element.click();
     }
 }
