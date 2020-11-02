@@ -15,7 +15,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class ElementsOnTheServicePage extends BaseClass {
-
     public static final String URL_DIFF_ELEMENT_PAGES = "https://jdi-framework.github.io/tests/page8.htm";
     private final BaseClass base;
 
@@ -25,8 +24,7 @@ public class ElementsOnTheServicePage extends BaseClass {
 
     @When("^User opened through the header menu Service -> Different Elements Page$")
     public void openDifferentElementsPage() {
-
-        WebElement element = base.driver.findElement((By.cssSelector(pageService)));
+        WebElement element = base.driver.findElement((By.xpath(pageService)));
         element.click();
         base.driver.findElement((By.cssSelector(differentElementPage)));
         element.click();

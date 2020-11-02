@@ -19,23 +19,30 @@ public class ButtonsForServicePage extends BaseClass {
 
     @When("^Clicked on Service in the header$")
     public void clickServiceHeader() {
-        base.driver.findElement((By.cssSelector(serviceHeader))).click();
+        clickElement(serviceHeader);
     }
 
     @Then("^Drop down contains option in the header$")
     public void headerDropdownElementsDisplayed() {
-        WebElement element = base.driver.findElement(By.cssSelector(dropdownInTheHeader));
-        assertTrue(element.isDisplayed());
+        displayedElement(dropdownInTheHeader);
     }
 
     @When("^Clicked on Service in the left$")
     public void clickServiceLeft() {
-        base.driver.findElement((By.cssSelector(leftService))).click();
+        clickElement(leftService);
     }
 
     @Then("^Drop down contains option in the left$")
     public void leftDropdownElementsDisplayed() {
-        WebElement element = base.driver.findElement(By.cssSelector(dropdownInTheLeft));
+        displayedElement(dropdownInTheLeft);
+    }
+
+    public void clickElement(String string) {
+        base.driver.findElement((By.cssSelector(string))).click();
+    }
+
+    public void displayedElement(String string) {
+        WebElement element = base.driver.findElement(By.cssSelector(string));
         assertTrue(element.isDisplayed());
     }
 }

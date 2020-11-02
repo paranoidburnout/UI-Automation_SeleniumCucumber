@@ -49,11 +49,15 @@ public class HomePage extends BaseClass {
 
     @And("^Main title text center was displayed$")
     public void checkMainTitleTextCenter() {
-        Assert.assertTrue(base.driver.findElement(By.xpath(mainTitleTextCenter)).isDisplayed());
+        assertDis(mainTitleTextCenter);
     }
 
     @And("^Below main title text center was displayed$")
     public void checkBelowMainTitleTextCenter() {
-        Assert.assertTrue(base.driver.findElement(By.xpath(belowMainTitleTextCenter)).isDisplayed());
+        assertDis(belowMainTitleTextCenter);
+    }
+
+    public void assertDis(String string) {
+        Assert.assertTrue(base.driver.findElement(By.xpath(string)).isDisplayed());
     }
 }

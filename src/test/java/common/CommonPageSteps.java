@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import static constants.Constants.*;
+import static constants.Constants.enterButton;
+import static constants.Constants.userIcon;
 
 public class CommonPageSteps {
 
@@ -26,19 +27,21 @@ public class CommonPageSteps {
 
     @And("^Pressed button with user icon$")
     public void pressIcon() {
-        WebElement element = base.driver.findElement(By.xpath(userIcon));
-        element.click();
+        elementClick(userIcon);
     }
 
     @And("^Entered text \"([^\"]*)\" to the field \"([^\"]*)\"$")
-    public void inputWithNameText(String login, String password) {
-        base.driver.findElement(By.cssSelector(loginForm)).sendKeys(login);
-        base.driver.findElement(By.cssSelector(passwordForm)).sendKeys(password);
+    public void inputWithNameText(String value, String fieldName) {
+        base.driver.findElement(By.xpath(String.format("//*[@id='%s']", fieldName))).sendKeys(value);
     }
 
     @And("^Pressed element with value 'Enter'$")
     public void pressElementWithValueEnter() {
-        WebElement element = base.driver.findElement(By.xpath(enterButton));
+        elementClick(enterButton);
+    }
+
+    public void elementClick(String string) {
+        WebElement element = base.driver.findElement(By.xpath(string));
         element.click();
     }
 }

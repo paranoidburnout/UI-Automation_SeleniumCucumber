@@ -1,4 +1,4 @@
-
+@1
 Feature: UI elements functionality
 
   Background:

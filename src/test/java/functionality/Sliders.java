@@ -70,15 +70,15 @@ public class Sliders extends BaseClass {
     }
 
     @Then("The \"([^\"]*)\" slider has been successfully moved$")
-    public void leftSliderHasBeenSuccessfullyMoved(String slider) {
+    public void sliderHasBeenSuccessfullyMoved(String slider) {
         WebElement left = base.driver.findElement(By.cssSelector(leftSlider));
         WebElement right = base.driver.findElement(By.cssSelector(rightSlider));
         switch (slider) {
             case "left":
-                Objects.equals(left.getText(), sliderL);
+                Objects.equals(left.getText(), sliderL.toString());
                 break;
             case "right":
-                Objects.equals(left.getText(), sliderR);
+                Objects.equals(right.getText(), sliderR.toString());
                 break;
         }
     }
