@@ -1,7 +1,5 @@
 package presence;
 
-//import common.Hooks;
-
 import common.BaseClass;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -12,24 +10,18 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static constants.Constants.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class ElementsOnTheServicePage extends BaseClass {
 
-    private BaseClass base;
+    public static final String URL_DIFF_ELEMENT_PAGES = "https://jdi-framework.github.io/tests/page8.htm";
+    private final BaseClass base;
 
     public ElementsOnTheServicePage(BaseClass base) {
         this.base = base;
     }
-    public static String pageService = ".sidebar-menu .sub-menu";
-    public static String differentElementPage = ".sub-menu [href = 'page8.htm']";
-    public static String labelRadio = "//*[@class = 'label-radio']";
-    public static String labelCheckbox = "//*[@class = 'label-checkbox']";
-    public static String uuiFormElement = "//select[@class = 'uui-form-element']";
-    public static String uuiButtons = ".main-content .uui-button";
-    public static String leftSection = "//div[@id='mCSB_1']";
-    public static String rightSection = "//div[@id='mCSB_2']";
 
     @When("^User opened through the header menu Service -> Different Elements Page$")
     public void openDifferentElementsPage() {
@@ -38,7 +30,7 @@ public class ElementsOnTheServicePage extends BaseClass {
         element.click();
         base.driver.findElement((By.cssSelector(differentElementPage)));
         element.click();
-        base.driver.get("https://jdi-framework.github.io/tests/page8.htm");
+        base.driver.get(URL_DIFF_ELEMENT_PAGES);
         base.driver.manage().window().maximize();
     }
 

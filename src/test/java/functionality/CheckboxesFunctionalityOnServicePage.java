@@ -9,18 +9,14 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static constants.Constants.*;
+
 public class CheckboxesFunctionalityOnServicePage extends BaseClass {
-    private BaseClass base;
+    private final BaseClass base;
 
     public CheckboxesFunctionalityOnServicePage(BaseClass base) {
         this.base = base;
     }
-
-    public static String labelCheckbox = "//*[@class = 'label-checkbox']";
-    public static String labelRadio = "//*[@class = 'label-radio']";
-    public static String uuiFormElement = "//select[@class = 'uui-form-element']";
-    public static String yellow = "//*[@class = 'uui-form-element']/option[contains(., 'Yellow')]";
-    public static String panelBodyListLogs = "//*[@class='panel-body-list logs']/li";
 
     @And("^Checkbox \"([^\"]*)\" elements have been selected$")
     public void selectEarthElement(String element) {

@@ -7,20 +7,16 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static constants.Constants.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class LoginPage extends BaseClass {
-    private BaseClass base;
+    private final BaseClass base;
 
     public LoginPage(BaseClass base) {
         this.base = base;
     }
-
-    public static String userIcon = "//*[@class='fa fa-user']";
-    public static String enterButton = "//button/i[@class='fa fa-sign-in']";
-    public static String userName = "//*[@class='profile-photo']//span";
-
 
     @When("^User pressed button with user icon$")
     public void pressIcon() {
@@ -30,8 +26,9 @@ public class LoginPage extends BaseClass {
     }
 
     @And("^Type to input with name \"([^\"]*)\" text: \"([^\"]*)\"$")
-    public void typeToInputWithNameText(String input, String text) {
-        base.driver.findElement(By.xpath(String.format("//*[@id='%s']", input))).sendKeys(text);
+    public void typeToInputWithNameText(String login, String password) {
+        base.driver.findElement(By.cssSelector(loginForm)).sendKeys(login);
+        base.driver.findElement(By.cssSelector(passwordForm)).sendKeys(password);
     }
 
     @And("^User pressed element with value 'Enter'$")

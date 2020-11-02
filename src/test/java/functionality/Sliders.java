@@ -11,8 +11,11 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.util.Objects;
 
+import static constants.Constants.*;
+
 public class Sliders extends BaseClass {
-    private BaseClass base;
+    public static final String URL_DATES = " https://jdi-framework.github.io/tests/page4.htm";
+    private final BaseClass base;
 
     public Sliders(BaseClass base) {
         this.base = base;
@@ -20,11 +23,6 @@ public class Sliders extends BaseClass {
 
     Integer sliderL;
     Integer sliderR;
-    public static String pageService = "//a/span[contains(text(),'Service')]";
-    public static String pageDates = "//a/p/span[contains(text(),'Dates')]";
-    public static String leftSlider = "div:nth-child(2) > div > a:nth-child(1)";
-    public static String rightSlider = "div:nth-child(2) > div > a:nth-child(3)";
-
 
     @And("^Opened through the left menu Service -> Dates$")
     public void openedServiceAndDatesPages() {
@@ -32,7 +30,7 @@ public class Sliders extends BaseClass {
         element.click();
         base.driver.findElement((By.xpath(pageDates)));
         element.click();
-        base.driver.get(" https://jdi-framework.github.io/tests/page4.htm");
+        base.driver.get(URL_DATES);
         base.driver.manage().window().maximize();
     }
 
@@ -57,13 +55,13 @@ public class Sliders extends BaseClass {
         actions.dragAndDropBy(right, (int) ((-(diff) * 2.64)), 0).build().perform();
         int newCurrentPercentage = Integer.parseInt(right.getText());
         if (newCurrentPercentage > sliderRight) {
-            while (newCurrentPercentage > sliderRight) {
+            while (true) {
                 actions.dragAndDropBy(right, -5, 0).build().perform();
                 int finalNewCurrentPercentage = Integer.parseInt(right.getText());
                 if (finalNewCurrentPercentage == sliderRight) break;
             }
         } else if (newCurrentPercentage < sliderRight) {
-            while (newCurrentPercentage < sliderRight) {
+            while (true) {
                 actions.dragAndDropBy(right, 5, 0).build().perform();
                 int finalNewCurrentPercentage = Integer.parseInt(right.getText());
                 if (finalNewCurrentPercentage == sliderRight) break;

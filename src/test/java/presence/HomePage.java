@@ -10,25 +10,22 @@ import org.testng.Assert;
 
 import java.util.List;
 
+import static constants.Constants.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class HomePage extends BaseClass {
 
-    private BaseClass base;
+    public static final String URL = "https://jdi-framework.github.io/tests/index.htm";
+    private final BaseClass base;
 
     public HomePage(BaseClass base) {
         this.base = base;
     }
 
-    public static String imagesOnHomePage = ".benefit-icon span";
-    public static String textsOnHomePage = "benefit-txt";
-    public static String mainTitleTextCenter = "//h3[contains(@class, 'main-title text-center')]";
-    public static String belowMainTitleTextCenter = "//p[contains(@class, 'main-txt text-center')]";
-
     @When("^User open the home page$")
     public void openHomePage() {
-        base.driver.get("https://jdi-framework.github.io/tests/index.htm");
+        base.driver.get(URL);
         base.driver.manage().window().maximize();
     }
 

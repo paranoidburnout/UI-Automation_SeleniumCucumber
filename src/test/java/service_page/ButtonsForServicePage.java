@@ -6,19 +6,16 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static constants.Constants.*;
 import static org.testng.Assert.assertTrue;
-
 
 public class ButtonsForServicePage extends BaseClass {
 
-private BaseClass base;
-    public ButtonsForServicePage(BaseClass base){
+    private final BaseClass base;
+
+    public ButtonsForServicePage(BaseClass base) {
         this.base = base;
     }
-    public static String serviceHeader = "a[href*='page1.htm'].dropdown-toggle";
-    public static String dropdownInTheHeader = ".dropdown-menu>li";
-    public static String leftService = ".sidebar-menu .sub-menu";
-    public static String dropdownInTheLeft = ".sub>li";
 
     @When("^Clicked on Service in the header$")
     public void clickServiceHeader() {
@@ -41,5 +38,4 @@ private BaseClass base;
         WebElement element = base.driver.findElement(By.cssSelector(dropdownInTheLeft));
         assertTrue(element.isDisplayed());
     }
-
 }

@@ -6,20 +6,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class CommonPageSteps extends BaseClass {
+import static constants.Constants.*;
 
-    private BaseClass base;
+public class CommonPageSteps {
+
+    public static final String URL = "https://jdi-framework.github.io/tests/index.htm";
+    private final BaseClass base;
 
     public CommonPageSteps(BaseClass base) {
         this.base = base;
     }
 
-    public static String userIcon = "//*[@class='fa fa-user']";
-    public static String enterButton = "//button/i[@class='fa fa-sign-in']";
-
     @Given("^Page opened$")
     public void page_opened() {
-        base.driver.get("https://jdi-framework.github.io/tests/index.htm");
+        base.driver.get(URL);
         base.driver.manage().window().maximize();
         Assert.assertEquals(base.driver.getTitle(), "Index Page");
     }
@@ -31,8 +31,9 @@ public class CommonPageSteps extends BaseClass {
     }
 
     @And("^Entered text \"([^\"]*)\" to the field \"([^\"]*)\"$")
-    public void inputWithNameText(String value, String fieldName) {
-        base.driver.findElement(By.xpath("//*[@id='" + fieldName + "']")).sendKeys(value);
+    public void inputWithNameText(String login, String password) {
+        base.driver.findElement(By.cssSelector(loginForm)).sendKeys(login);
+        base.driver.findElement(By.cssSelector(passwordForm)).sendKeys(password);
     }
 
     @And("^Pressed element with value 'Enter'$")
